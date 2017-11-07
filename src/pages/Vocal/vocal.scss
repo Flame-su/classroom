@@ -1,0 +1,286 @@
+ @import '../../styles/_common.scss';
+ .vocal {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: rem(80) rem(20) rem(75);
+   box-sizing: border-box;
+   color: #000;
+   font-size: rem(30);
+   .DelayTime {
+     visibility: hidden;
+     &.show {
+       visibility: visible;
+     }
+   }
+   .top {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            padding: rem(30);
+            box-sizing: border-box;
+            display: flex;
+            height: rem(110);
+            justify-content: space-between;
+     .reset {
+            width: rem(130);
+            height: rem(50);
+            border: rem(2) solid #FA5857;
+            border-radius: rem(25);
+            color: #FA5857;
+            background: transparent;
+            font-size: rem(26);
+            text-align: center;
+            line-height: rem(50);
+     }
+     input {
+       width: rem(130);
+       height: rem(50);
+       border: rem(2) solid #FA5857;
+       border-radius: rem(25);
+       color: #FA5857;
+       background: transparent;
+       font-size: rem(26);
+     }
+     .count {
+       vertical-align: middle;
+       font-size: rem(26);
+       &::after {
+         content: '';
+         display: inline-block;
+         margin-left: rem(17);
+         width: rem(27);
+         height: rem(25);
+         background: url('../../static/image/icon001.png') no-repeat;
+         background-size: contain;
+       }
+       .cur {
+         color: #fa5857;
+         font-size: rem(30);
+       }
+     }
+   }
+   .lrc-list {
+     width: 100%;
+//   flex-grow: 1;
+     height: rem(720);
+     position: relative;
+     overflow: hidden;
+     .lrc-box {
+       margin-top: 55%;
+       width: 100%;
+       transition: all .5s;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       h3,
+       h5 {
+         height: rem(80);
+       }
+       .item {
+         position: relative;
+         height: rem(72);
+         &.act {
+           font-size: rem(34);
+         }
+         p {
+           text-align: left;
+           height: rem(72);
+           overflow: hidden;
+           white-space: nowrap;
+           &.cur {
+             transform: translateY(rem(-72));
+             color: rgb(255, 88, 87);
+             width: 0;
+             overflow: hidden;
+             &.active {
+               transition: all .4s;
+             }
+           }
+         }
+       }
+     }
+     &::before,
+     &::after {
+       content: '';
+       position: absolute;
+       left: 0;
+       top: 0;
+       z-index: 99;
+       width: 100%;
+       height: rem(200);
+       background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, 0));
+     }
+     &::after {
+       top: auto;
+       bottom: 0;
+        height: rem(130);
+       z-index: 99;
+       background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .8));
+     }
+   }
+   .tape {
+     width: rem(510);
+     flex-grow: 0;
+     height: rem(225);
+     text-align: center;
+     margin-top: rem(90);
+     .tip {
+         margin-bottom: rem(50);
+       font-size: rem(22);
+       padding-top: rem(30);
+       color: #999;
+     }
+     ul {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       height: rem(110);
+       li {
+         width: rem(86);
+         height: rem(86); //  background-color: #666;
+         border-radius: 50%;
+         overflow: hidden;
+         position: relative;
+         img {
+           width: 100%;
+           height: 100%;
+         }
+         &.hide {
+           visibility: hidden;
+         }
+         &.tape-start {
+           width: rem(110);
+           height: rem(110);
+           background: url('../../static/image/tape.png') no-repeat;
+           background-size: contain;
+         }
+         &.play {
+           &[data-song="1"] {}
+           &[data-song="2"] {
+             &.not {
+               &::before {
+                 background: url('../../static/image/cry.png') no-repeat;
+                 background-color: rgba(253, 199, 49, 0.8);
+                 background-size: cover;
+               }
+             }
+             &::before {
+               position: absolute;
+               border-radius: 50%;
+               content: '';
+               width: 100%;
+               height: 100%;
+               left: 0;
+               top: 0;
+               background: url('../../static/image/stop.png');
+               background-repeat: no-repeat;
+               background-position: center;
+               background-size: 60%;
+               z-index: 99;
+             }
+           }
+           .wp {
+             @include wp();
+           }
+         }
+         &.pause {
+           &[data-song="1"] {}
+           &[data-song="2"] {
+             &.not {
+               &::before {
+                 background: url('../../static/image/cry.png') no-repeat;
+                 background-color: rgba(253, 199, 49, 0.8);
+                 background-size: cover;
+               }
+             }
+             &::before {
+               position: absolute;
+               border-radius: 50%;
+               content: '';
+               width: 100%;
+               height: 100%;
+               left: 0;
+               top: 0;
+               background: url('../../static/image/play.png');
+               background-repeat: no-repeat;
+               background-position: center;
+               background-size: 60%;
+               z-index: 99;
+             }
+           }
+           .wp {
+             @include wp();
+           }
+         }
+	.animate{
+       	 margin-top: rem(80);
+       	 width: rem(509);
+     	}
+       }
+     }
+   }
+   .pushwork {
+     width: 100%;
+     height: rem(160);
+     padding: rem(35) rem(65);
+     position: fixed;
+     bottom: 0;
+     background: #FFFFFF;
+     z-index: 100;
+     display: flex;
+     justify-content: space-between;
+     input {
+       height: rem(90);
+       width: rem(280);
+       background: #FA5958;
+       font-size: rem(34);
+       border-radius: rem(45);
+       color: #FFFFFF;
+     }
+   } //教学提示
+   .lrc-tips {
+     width: rem(500);
+     height: rem(110);
+     background-color: #ffe466;
+     border-radius: rem(50);
+     position: absolute;
+     left: 50%;
+     top: rem(400);
+     color: #666;
+     transform: translateX(-50%);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: rem(30);
+     padding-left: rem(110);
+     font-size: rem(24);
+     &.bt {
+       top: 70%;
+       z-index: 9999
+     }
+     &::after {
+       content: '';
+       width: rem(134);
+       height: rem(134);
+       position: absolute;
+       left: rem(-10);
+       top: rem(10);
+       background: url('../../static/image/tips_boy.png') no-repeat;
+       background-size: cover;
+     }
+     &::before {
+       content: '';
+       width: 0;
+       height: 0;
+       border: rem(20) solid transparent;
+       position: absolute;
+       left: rem(120);
+       bottom: rem(-59);
+       transform: translateY(-50%);
+       border-top-color: #ffe466;
+     }
+   }
+ }

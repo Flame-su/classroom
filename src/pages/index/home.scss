@@ -1,0 +1,301 @@
+@import '../../styles/_common.scss';
+.class_home {
+    width: 100%;
+    height: 100%;
+    background: #F2F5F6;
+    position: relative;
+    .banner {
+        width: 100%;
+        height: rem(300);
+        background: #ff6767;
+        padding: rem(60) rem(40);
+        box-sizing: border-box;
+        color: #fff;
+        .content {
+            width: 100%;
+            position: relative;
+            .photo {
+                float: left;
+                width: rem(130);
+                height: rem(130);
+                border-radius: 50%;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .over {
+                position: absolute;
+                top: rem(110);
+                right: rem(0);
+                b{
+                    font-size: rem(50);
+                }
+            }
+        }
+        .introduce {
+            margin-top: rem(20);
+            margin-left: rem(32);
+            float: left;
+            margin-bottom: rem(20);
+            h3 {
+                font-size: rem(38);
+            }
+            p {
+                color: #FECACA;
+            }
+        }
+        p {
+            text-align: right;
+            font-size: rem(26);
+            b {
+                font-size: rem(60);
+            }
+        }
+    }
+    .classContent {
+        width: 100%;
+        position: absolute;
+        top: rem(240);
+        height: rem(940);
+        ul {
+            width: auto;
+            .swiper-slide {
+                height: rem(800);
+                width: rem(557);
+                border-radius: rem(16);
+                overflow: hidden;
+                float: left;
+                background: #fff;
+                box-shadow: 0 rem(40) rem(77) rem(-4) #DCE0E3;
+                position: relative;
+                .mask {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: rem(578);
+                    height: rem(800);
+                    z-index: 100;
+                }
+                img {
+                    width: 100%;
+                    vertical-align: bottom;
+                    height: rem(340);
+                }
+                .box {
+                    padding-left: rem(42);
+                    box-sizing: border-box;
+                    height: rem(430);
+                    padding-top: rem(40);
+                    h3 {
+                        margin: 0 rem(36) rem(20) 0;
+                        font-size: rem(36);
+                    }
+                    ul>li:nth-child(odd) {
+                        span {
+                            border: 3px solid #ff6767;
+                        }
+                    }
+                    ul>li:nth-child(even) {
+                        span {
+                            border: 3px solid green;
+                        }
+                    }
+                    ul>li>span {
+                        margin-right: rem(32);
+                        display: inline-block;
+                        width: rem(14);
+                        height: rem(14);
+                        border-radius: 50%;
+                        font-weight: bolder;
+                        position: relative;
+                        margin-bottom: rem(2);
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: 1px;
+                            height: rem(25);
+                            background-color: #999;
+                            left: 50%;
+                            top: rem(22);
+                            transform: translateX(-50%);
+                            z-index: 99;
+                        }
+                    }
+                    ul>li:last-child {
+                        span {
+                            color: #ff6767;
+                            &::before {
+                                display: none;
+                            }
+                        }
+                    }
+                    li {
+                        height: rem(60);
+                        font-size: rem(28);
+                        line-height: rem(60);
+                    }
+                }
+                .box-last {
+                    padding: 0 rem(42);
+                    height: rem(430);
+                    padding-top: rem(40);
+                    position: relative;
+                    h3 {
+                        font-size: rem(36);
+                        margin-bottom: rem(0);
+                    }
+                    .close {
+                        position: absolute;
+                        bottom: rem(50);
+                        font-size: rem(24);
+                        width: 100%;
+                        color: #999999;
+                        bottom: rem(7);
+                        img {
+                            float: right;
+                            margin-right: rem(84);
+                            width: rem(36);
+                            height: rem(36);
+                        }
+                    }
+                    .chapter_intro {
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        padding-right: rem(42);
+                        left: rem(42);
+                        bottom: rem(7);
+                        background: #FFFFFF;
+                        z-index: 100;
+                        h4 {
+                            font-size: rem(30);
+                            font-weight: normal;
+                            color: #222222;
+                            margin-bottom: rem(15);
+                            background: url(../../static/image/xm.png) no-repeat;
+                            background-size: rem(38) rem(38);
+                            text-indent: rem(45);
+                        }
+                        p {
+                            color: #999999;
+                            font-size: rem(25);
+                            width: rem(400);
+                            line-height: rem(40);
+                        }
+                    }
+                    .plan {
+                        display: flex;
+                        justify-content: space-around;
+                        position: absolute;
+                        width: 100%;
+                        bottom: rem(7);
+                        p {
+                            color: #999999;
+                            font-size: rem(26);
+                            width: 100%;
+                            b {
+                                color: #ff6767;
+                                font-size: rem(50);
+                                margin-left: rem(220);
+                            }
+                        }
+                    }
+                }
+                .lastInfo{
+                    position: relative;                    
+                }
+                .lastText{
+                    color: #FFFFFF;
+                    position: absolute;
+                    text-align: center;
+                    width: 100%;
+                    bottom: rem(120);
+                    h3{
+                        font-size: rem(40);
+                        margin-bottom: rem(10);
+                        
+                    };
+                    p{
+                        color: #C0A6FF;
+                        font-size: rem(26);
+                    }
+                }
+            }
+        }
+    }
+    //卡片定位作用
+    .one {
+        transform: translate3d(rem(85.8594), 0px, 0px);
+        display: flex;
+    }
+    .two {
+        transition-duration: 0ms;
+        transform: translate3d(rem(-527.422), 0px, 0px);
+        display: flex;
+    }
+    .three {
+        transform: translate3d(rem(-1140.7), 0px, 0px);
+        display: flex;
+    }
+    .four {
+        transform: translate3d(rem(-1753.98), 0px, 0px);
+        display: flex;
+    }
+    .five {
+        transform: translate3d(rem(-2367.27), 0px, 0px);
+        display: flex;
+    }
+    .six {
+        transform: translate3d(rem(-2980.55), 0px, 0px);
+        display: flex;
+    }
+    .seven{
+        transform: translate3d(rem(-3593.88),0px,0px);
+        display: flex;
+    }
+   
+//  .bg {
+//      width: 100%;
+//      height: rem(940);
+//      background: #F2F5F6;
+//  }
+    .footer {
+        width: 100%;
+        text-align: center;
+//      position: fixed;
+//      bottom: rem(-10);
+//      margin-top: rem(740);
+        position: absolute;
+        top: rem(1040);
+        z-index: 100;
+        height: rem(140);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+//      border-top:rem(1) solid #efefef;
+        .sure{
+            width: rem(440);
+            height: rem(90);
+            font-size: rem(36);
+            color: #fff;
+            background: #ff6767;
+            text-align: center;
+            margin: 0 auto;
+            line-height: rem(90);
+            border-radius: rem(45);
+            
+        }
+        .sure:active{
+           opacity: .8;
+        }
+        .last_mask{
+            width: rem(440);
+            height: rem(90);
+            position: absolute;
+            top: center;
+            background: transparent;
+        }
+    }
+}

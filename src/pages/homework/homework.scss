@@ -1,0 +1,226 @@
+@import '../../styles/_common.scss';
+.homework {
+  height: 100%;
+  .title {
+    position: relative;
+    img {
+      width: 100%;
+      height: rem(280);
+      vertical-align: bottom;
+    }
+    .bg-music {
+      position: absolute;
+      left: rem(25);
+      top: rem(210);
+      img {
+        float: left;
+        width: rem(50);
+        height: rem(50);
+        margin-right: rem(8);
+      }
+      p {
+        float: left;
+        font-size: rem(22);
+        line-height: rem(50);
+        color: #FFFFFF;
+      }
+    }
+  }
+  .title-name {
+    text-align: center;
+    height: rem(140);
+    padding-top: rem(25);
+    box-sizing: border-box;
+    h3 {
+      font-size: rem(32);
+      color: #000000;
+      margin-bottom: rem(5);
+    }
+    p {
+      font-size: rem(24);
+      color: #999999;
+    }
+  }
+  .blank {
+    width: 100%;
+    height: rem(20);
+    background: #F9F9F9;
+  }
+  .content {
+    width: 100%;
+    .all {
+      font-size: rem(24);
+      margin-top: rem(48);
+      color: #999999;
+      text-align: center;
+      position: relative;
+      margin-bottom: rem(30);
+    }
+    .all:before {
+      content: '';
+      position: absolute;
+      width: rem(60);
+      height: rem(1);
+      top: 50%;
+      background-color: #dddddd;
+      z-index: 10;
+      left: 25%;
+    }
+    .all:after {
+      content: '';
+      position: absolute;
+      width: rem(60);
+      height: rem(1);
+      top: 50%;
+      background-color: #dddddd;
+      z-index: 10;
+      right: 25%;
+    }
+    ul {
+      width: 100%;
+      padding: rem(10) 0 rem(180) rem(30);
+      box-sizing: border-box;
+      li {
+        margin-bottom: rem(27);
+        .message {
+          .headsho {
+            width: rem(80);
+            height: rem(80);
+            border-radius: 50%;
+            float: left;
+          }
+          .work-music {
+            width: rem(620);
+            float: right;
+            border-bottom: 1px solid #EFEFEF;
+            position: relative;
+            .name {
+              font-size: rem(28);
+              color: #000000;
+              margin-top: rem(15);
+              margin-bottom: rem(6);
+              font-weight: normal;
+            }
+            .time {
+              color: #AAAAAA;
+              font-size: rem(18);
+              margin-bottom: rem(20);
+            }
+            .mask {
+              position: absolute;
+              height: rem(100);
+              width: rem(580);
+              background: red;
+              z-index: 100;
+            }
+            .play {
+              display: block;
+              height: rem(110);
+              width: rem(580);
+              margin-bottom: rem(30);
+              background: #F9F9F9;
+              position: relative;
+              i {
+                width: rem(50);
+                height: rem(50);
+                position: absolute;
+                top: 50%;
+                margin-top: rem(-25);
+                left: rem(30);
+                background: url(../../static/image/n-play.png) no-repeat;
+                background-size: cover;
+              }
+              &.active {
+                .isplay {
+                  background: url(../../static/image/n-stop.png) no-repeat;
+                  background-size: cover;
+                }
+                .ispause {
+                  background: url(../../static/image/n-play.png) no-repeat;
+                  background-size: cover;
+                }
+              }
+              img {
+                width: rem(110);
+                height: rem(110);
+                float: left;
+              }
+              .work-content {
+                float: left;
+                margin-left: rem(25);
+                height: 100%;
+                display: flex;
+                align-items: center;
+                p {
+                  font-size: rem(26);
+                  color: #222222;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .BTMusic {
+    width: 100%;
+    height: rem(80);
+    position: fixed;
+    border-top: rem(1) solid #ECECEC;
+    display: flex;
+    left: 0;
+    bottom: rem(159);
+    display: flex;
+    padding: 0 rem(30);
+    justify-content: space-between;
+    align-items: center;
+    background: #F9F9F9;
+    div {
+      display: flex;
+      justify-content: center;
+      img {
+        width: rem(50);
+        height: rem(50);
+        border-radius: 50%;
+      }
+      p {
+        font-size: rem(22);
+        line-height: rem(50);
+        color: #222222;
+        margin-left: rem(20);
+      }
+    }
+  }
+  .footer {
+    background: #FFFFFF;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    height: rem(160);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: rem(1) solid #EEEEEE;
+    .lastmask {
+      width: rem(440);
+      height: rem(90);
+      border-radius: rem(45);
+    }
+    .sure {
+      width: rem(440);
+      height: rem(90);
+      font-size: rem(36);
+      color: #fff;
+      background: #ff6767;
+      text-align: center;
+      margin: 0 auto;
+      line-height: rem(90);
+      border-radius: rem(45);
+    }
+    .sure:active {
+      opacity: 0.8;
+    }
+  }
+}

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>跟着明星学唱歌</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html {
+      font-size: 100px;
+    }
+		
+    html,
+    body,
+    .ordering,
+    .title,
+    {
+      width: 100%;
+      height: 100%;
+    }
+    a,input{
+    	-webkit-tap-highlight-color:rgba(255,0,0,0);
+    }
+    .pay_success{
+      width: 100%;
+      background-color: #fff;
+      top: 0;
+      left: 0;	
+      z-index: 999;
+       display:none;
+    }
+    .pay_success .con{
+        text-align:left;
+        margin:8vw 10.5vw;
+        margin-bottom: 7vw;
+    }
+    .pay_success h1{
+        font-size:4.5vw;
+        margin-bottom: 2vw;
+        text-align: center;
+    }
+    .pay_success p{
+    		font-size: 3.9vw;
+        color:#666;
+        text-align: left;
+        line-height: 7vw;
+    }
+    .qrcode{
+        text-align:center;
+    }
+    .qrcode img{
+        width: 40%
+    }
+		
+    .loading {
+      width: 100%;
+      height: 100%;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      left: 0;
+      font-size: 15px;
+      z-index: 999;
+    }
+
+    section {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 6.250em;
+      height: 6.250em;
+      animation: rotate 2.4s linear infinite;
+    }
+
+    .white {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      animation: flash 2.4s linear infinite;
+      opacity: 0;
+    }
+
+    .dot {
+      position: absolute;
+      margin: auto;
+      width: 2.4em;
+      height: 2.4em;
+      border-radius: 100%;
+      transition: all 1s ease;
+    }
+
+    .dot:nth-child(2) {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      background: #FF4444;
+      animation: dotsY 2.4s linear infinite;
+    }
+
+    .dot:nth-child(3) {
+      left: 0;
+      right: 0;
+      top: 0;
+      background: #FFBB33;
+      animation: dotsX 2.4s linear infinite;
+    }
+
+    .dot:nth-child(4) {
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background: #99CC00;
+      animation: dotsY 2.4s linear infinite;
+    }
+
+    .dot:nth-child(5) {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #33B5E5;
+      animation: dotsX 2.4s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate( 0);
+      }
+      10% {
+        width: 6.250em;
+        height: 6.250em;
+      }
+      66% {
+        width: 2.4em;
+        height: 2.4em;
+      }
+      100% {
+        transform: rotate(360deg);
+        width: 6.250em;
+        height: 6.250em;
+      }
+    }
+
+    @keyframes dotsY {
+      66% {
+        opacity: .1;
+        width: 2.4em;
+      }
+      77% {
+        opacity: 1;
+        width: 0;
+      }
+    }
+
+    @keyframes dotsX {
+      66% {
+        opacity: .1;
+        height: 2.4em;
+      }
+      77% {
+        opacity: 1;
+        height: 0;
+      }
+    }
+
+    @keyframes flash {
+      33% {
+        opacity: 0;
+        border-radius: 0%;
+      }
+      55% {
+        opacity: .6;
+        border-radius: 100%;
+      }
+      66% {
+        opacity: 0;
+      }
+    }
+
+    img {
+      width: 100%;
+      vertical-align: bottom
+    }
+
+    .video {
+      width: 100%;
+      position: relative;
+    }
+
+    .mask {
+      position: absolute;
+      width: 89vw;
+      left: 50%;
+      margin-left: -44.3vw;
+      height: 53.3vw;
+      bottom: 33.5vw;
+      background: #fff;
+    }
+
+    #sum {
+      font-size: 50px;
+      color: #FFED59;
+    }
+
+    video {
+      width: 89vw;
+      height: 53.3vw
+    }
+
+    .bargin {
+      width: 100%;
+      position: relative;
+    }
+
+    .mxjs-qrcode{
+        margin:0;
+      background:#ff633a;
+      margin-bottom: 14.667vw;
+          text-align:center;
+    }
+    .mxjs-qrcode img{
+        position:relative;
+        margin-top:5vw;
+        margin-bottom:20vw;
+            width:50%;
+    }
+
+    .sum {
+      position: absolute;
+      left: 20vw;
+      color: #fff;
+      font-weight: normal;
+      font-size: 9vw;
+      bottom: 25vw;
+    }
+
+    .last {
+      text-align: center;
+      width: 100%;
+      font-size: 5vw;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    .last-left {
+      border-top: 1px solid #999;
+      padding-left: 5vw;
+      text-align: left;
+      width: 56.3vw;
+      height: 14.667vw;
+      background: #fff;
+      float: left;
+      line-height: 14.667vw;
+    }
+
+    .last-left>span {
+      display: inline-block;
+      font-size: 4vw;
+    }
+
+    .last-left>span>i {
+      border-bottom: 1px solid red;
+      width: 100%;
+      height: 1px;
+      display: block;
+      position: relative;
+      top: -7.5vw;
+    }
+
+    .last-right {
+      border-top: 1px solid #999;
+      width: 38.7vw;
+      height: 14.667vw;
+      background: #FFED59;
+      float: right;
+      line-height: 14.667vw;
+    }
+
+    #price-text {
+      font-size: 5vw;
+    }
+    #cur-price {
+      font-size: 5vw;
+      color:#FD6442
+    }
+    #org-price {
+      font-size: 4vw;
+    }
+
+    .button{
+         text-decoration: none;
+			    display: block;
+			    background: #ff6767;
+			    color: #ffffff;
+			    margin: 10vw auto;
+			    text-align: center;
+			    width: 60%;
+			    height: 12vw;
+			    border-radius: 6vw;
+			    font-size: 5vw;
+			    line-height: 12vw;
+			    transition: all 0.15s ease;
+			    margin-top: 11vw;
+	  }
+		.button:active{
+			opacity: .8;
+		}
+  </style>
+</head>
+
+<body>
+  <div class="loading" id="loading">
+    <section>
+      <div class="dot white"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </section>
+  </div>
+<div class="pay_success" id="pay_success">
+    <img src="http://static.tianyinculture.com/classroom/presell/image/pay-suc-hed.jpg" alt="" />
+    <div class="con"><h1>长按识别二维码，添加明星教室班主任个人微信</h1>
+<p>
+添加后凭支付截图进入授课群，班主任每天都会在群里开课，系统教授声乐知识：呼吸、气息、发声、节奏、技巧；针对学员问题答疑，给予一对一指导。
+        </p></div>
+    <div class="qrcode">
+    <img src="http://static.tianyinculture.com/classroom/presell/image/xxy-qun-code-1023.jpg" alt="" />
+    </div>
+    <a href="http://classroom.tianyinculture.com/classroom" class="button">开始学习</a>
+  </div>
+  <div class="ordering" id="ordering">
+    <div class="title">
+      <img src="http://static.tianyinculture.com/classroom/presell/image/title.jpg" alt="" />
+    </div>
+    <div class="video">
+      <img src="http://static.tianyinculture.com/classroom/presell/image/video_c1.png" />
+      <div class="mask">
+        <video width="800" controls x5-playsinline webkit-playsinline playsinline id="video" src="" data-url="http://static.tianyinculture.com/classroom/video/1/xxy-intro.mp4" poster="http://static.tianyinculture.com/classroom/img/1/xxy-video-cover.jpg" >
+          当前浏览器不支持 video直接播放
+        </video>
+      </div>
+    </div>
+    <div class="intro">
+      <img src="http://static.tianyinculture.com/classroom/presell/image/intro_new.png" />
+    </div>
+    <div class="content">
+      <img src="http://static.tianyinculture.com/classroom/presell/image/content_new.png" />
+    </div>
+    <div class="price">
+      <img src="http://static.tianyinculture.com/classroom/presell/image/price_new.png" />
+    </div>
+    <div class="bargin" id="bargin-price">
+      <img src="http://static.tianyinculture.com/classroom/presell/image/bargin_1.png" />
+      <p class="sum">
+        仅剩 <span id="sum"></span>/<span id="store"></span>名
+      </p>
+    </div>
+    <div class="mxjs-qrcode">
+      <img src="http://static.tianyinculture.com/classroom/presell/image/mxjs-qrcode.jpg" />
+    </div>
+    <div class="last">
+      <div class="last-left">
+              <span id="price-text">折扣价：</span> <span id="cur-price"></span> <del id="org-price"></del>
+      </div>
+      <div class="last-right" id="payBtn">
+        立即抢购
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+<script type="text/javascript">
+  var BASE_API = 'http://api.classroom.tianyinculture.com';
+  var GOODS_ID = '';
+  $(function () {
+    var Data = '';
+    var Sum = document.querySelector('#sum');
+    var Store = document.querySelector('#store');
+    var BarginPrice = document.querySelector('#bargin-price');
+    var PriceText = document.querySelector('#price-text');
+    var CurPrice = document.querySelector('#cur-price');
+    var OrgPrice = document.querySelector('#org-price');
+    var PayBtn = document.querySelector('#payBtn');
+    var Video = document.querySelector('#video');
+    var loading = document.querySelector('#loading');
+    var ordering= document.querySelector('#ordering');
+    var pay_success= document.querySelector('#pay_success');
+    //loading 设置1.5s
+    setTimeout(function () {
+      loading.style.display = 'none';
+    }, 1500);
+    $('.pay_success').on('touchmove', function (event) {
+		    event.preventDefault();
+		});
+    //获取签名
+    getData();
+    getProﬁle();
+    function getProﬁle(){
+    	$.ajax({
+    		type:"get",
+    		url:BASE_API +"/weixin/getSignature",
+    		async:true,
+            xhrFields: {
+                withCredentials: true
+            },
+    		success:function(res){
+    			  wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: res.data.appId, // 必填，公众号的唯一标识
+            timestamp: res.data.timestamp, // 必填，生成签名的时间戳
+            nonceStr: res.data.nonceStr, // 必填，生成签名的随机串
+            signature: res.data.signature,// 必填，签名，见附录1
+            jsApiList : [ 'checkJsApi', 'startRecord', 'stopRecord','translateVoice','scanQRCode','openCard',"chooseWXPay","onMenuShareAppMessage","onMenuShareTimeline"]
+          });
+                  var sharecode = res.data.sharecode
+                  wx.ready(function(){
+                      wx.onMenuShareAppMessage({
+                          title: '明星教室“小幸运”唱歌课程火爆开课中，快来和帅气的小哥哥一起学习吧！', // 分享标题
+                          desc: '百万人在这里学会了唱歌', // 分享描述
+                          link: 'http://classroom.tianyinculture.com/presell/index.html?sharecode='+sharecode, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                          imgUrl: 'http://static.tianyinculture.com/classroom/img/1/mxjs-logo.jpg', // 分享图标
+                          type: '', // 分享类型,music、video或link，不填默认为link
+                          dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                          success: function () { 
+                              // 用户确认分享后执行的回调函数
+                          },
+                          cancel: function () { 
+                              // 用户取消分享后执行的回调函数
+                          }
+                      });
+
+                      wx.onMenuShareTimeline({
+                          title: '明星教室“小幸运”唱歌课程火爆开课中，快来和帅气的小哥哥一起学习吧！', // 分享标题
+                          desc: '百万人在这里学会了唱歌', // 分享描述
+                          link: 'http://classroom.tianyinculture.com/presell/index.html?sharecode='+sharecode, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                          imgUrl: 'http://static.tianyinculture.com/classroom/img/1/mxjs-logo.jpg', // 分享图标
+                          type: '', // 分享类型,music、video或link，不填默认为link
+                          dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                          success: function () { 
+                              // 用户确认分享后执行的回调函数
+                          },
+                          cancel: function () { 
+                              // 用户取消分享后执行的回调函数
+                          }
+                      });
+
+                  });
+    		}
+    	});
+    }
+        
+    //注册支付
+    PayBtn.onclick = WXPay;
+    //产品信息
+    function getData() {
+      $.ajax({
+        url: BASE_API + '/product/getProductInfo',
+        data: {
+          productid: 1
+        },
+        type: 'get',
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function (res) {
+          if (res.code == 0) {
+            Data = res.data;
+            GOODS_ID = Data.productid;
+            update(Data);
+          } else if (res.code == 106) {
+            //授权跳转
+            window.location.href = res.data.url;
+          } else {
+            alert(res.errmsg);
+          }
+        },
+        error: function () {
+          alert('数据请求失败');
+        }
+      })
+    }
+    //更新页面数据
+    function update(data) {
+      Video.src = Video.dataset.url;
+      Store.innerHTML = data.store;
+      if(Number(data.sales) >= Number(data.store)) {
+          Sum.innerHTML =  0;
+          BarginPrice.style.display = "none";
+          PriceText.innerHTML = "售价：";
+          CurPrice.innerHTML = data.oprice;
+          OrgPrice.style.display = "none";
+      } else {
+          Sum.innerHTML = data.store - data.sales;
+          BarginPrice.style.display = "block";
+          PriceText.innerHTML = "折扣价：";
+          CurPrice.innerHTML = data.price;
+          OrgPrice.innerHTML = data.oprice;
+          OrgPrice.style.display = " ";
+      }
+    };
+    //微信本地支付
+    function WXPay() {
+      var jsApiParameters = '';
+      console.log('发起支付请求');
+      $.ajax({
+        url: BASE_API + '/weixin/createOrder',
+        type: 'post',
+        data: {
+          productid: GOODS_ID
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (res) {
+          console.log(res)
+          // alert(JSON.stringify(res));
+          if (res.code == 0) {
+          //  console.log("first") 
+          // wx.ready(function () {
+          //   // 在这里调用 API
+        
+          //   wx.onMenuShareTimeline({
+          //       title: '', // 分享标题
+          //       link: '', // 分享链接
+          //       imgUrl: '', // 分享图标
+          //       success: function () { 
+          //           // 用户确认分享后执行的回调函数
+          //       },
+          //       cancel: function () { 
+          //           // 用户取消分享后执行的回调函数
+          //       }
+          //   });
+            
+            wx.chooseWXPay({
+            
+              appId: res.data.appId,
+              timestamp: res.data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+              nonceStr: res.data.nonceStr, // 支付签名随机串，不长于 32 位
+              package: res.data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+              signType: res.data.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+              paySign: res.data.paySign, // 支付签名
+              // jsApiList : [ 'checkJsApi', 'startRecord', 'stopRecord','translateVoice','scanQRCode','openCard' ],
+              success: function (res) {
+                // 支付成功后的回调函数
+                //alert('支付成功！', res)
+                  paySuccess()
+              },
+              fail:function(){
+                console.log("Fail")
+              },
+              complete:function(res){
+                //alert("complete")
+                console.log(res)
+              }
+            });
+          } else if (res.code == 106) {
+            //授权跳转
+            window.location.href = res.data.url;
+          } else if (res.code == 1210) {
+            alert("您已经购买过此课程");
+            paySuccess()
+          }
+
+        },
+        fail:function(){
+          console.log(1)
+        }
+      });
+      //支付回调
+      // function jsApiCall() {
+      //   WeixinJSBridge.invoke(
+      //     'getBrandWCPayRequest',
+      //     jsApiParameters,
+      //     function (res) {
+      //       switch (res.err_msg) {
+      //         case 'get_brand_wcpay_request:ok':
+      //           //成功支付跳转
+      //           wx.closeWindow();
+      //           console.log('支付成功');
+      //           break;
+      //         case 'get_brand_wcpay_request:cancel':
+      //           //取消支付
+      //           break;
+      //         case 'get_brand_wcpay_request:fail':
+      //           console.log('支付失败');
+
+      //           //失败跳转
+      //           break;
+      //       }
+      //     }
+
+      //   );
+      // };
+      // //支付兼容
+      // function callpay() {
+      //   if (typeof WeixinJSBridge == "undefined") {
+      //     if (document.addEventListener) {
+      //       document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+      //     } else if (document.attachEvent) {
+      //       document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+      //       document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+      //     }
+      //   } else {
+      //     jsApiCall();
+      //   }
+      // }
+    }
+  });
+
+function  paySuccess() {
+    ordering.style.display = 'none';
+    pay_success.style.display = 'block';
+}
+//paySuccess()
+</script>

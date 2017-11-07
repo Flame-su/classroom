@@ -1,0 +1,55 @@
+ @import '../../styles/_common.scss';
+ .finish {
+   width: 100%;
+   height: 100%; //  background: rgb(131, 75, 250) url('../../static/image/finish_bg.png') no-repeat;
+   //  background-size: contain;
+   //  background-position: top;
+   position: relative;
+   .content {
+     padding: rem(520) rem(100) 0;
+     box-sizing: border-box;
+     text-align: center;
+     h3 {
+       height: rem(90);
+       color: #fff;
+       font-size: rem(50);
+     }
+     h6 {
+       height: rem(110);
+       font-size: rem(30);
+       font-weight: 400;
+       color: #ffe466;
+     }
+     p {
+       font-size: rem(32);
+       line-height: rem(60);
+       color: #ffffff;
+       text-align: left;
+     }
+   }
+   .copyright {
+     position: absolute;
+     left: 50%;
+     bottom: rem(40);
+     transform: translateX(-50%);
+     font-size: rem(26);
+     color: #ffffff;
+     opacity:.5; 
+     &::before,
+     &::after {
+       content: '';
+       position: absolute;
+       width: rem(115);
+       height: 1px;
+       background-color: rgba(255, 255, 255, .4);
+       top: 50%;
+       transform: translateY(-50%);
+     }
+     &::before {
+       left: rem(-130);
+     }
+     &::after {
+       right: rem(-130);
+     }
+   }
+ }
